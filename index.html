@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🍁❤️ 5 Motivos do Porquê Te Amo ❤️🍁</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fff0f5;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+    .question-container, .final-message {
+      display: none;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    .active {
+      display: block;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+    .gallery img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🍁❤️ 5 Motivos do Porquê Te Amo ❤️🍁</h1>
+
+  <div id="questions"></div>
+
+  <div class="final-message" id="finalMessage">
+    <p>
+      oi amor, tudo bem? estou escrevendo esse texto para tentar dizer um pouco do que eu te amo,
+      pois se eu fosse escrever aqui mds a gente ia ficar aqui por horas, mas quero q saiba q eu amo vc mais q tudo nesse mundo,
+      e vc é uma das melhores coisas q me aconteceu. te conhecer em si foi a melhor coisa que me aconteceu.
+    </p>
+    <p>
+      quero q saiba q por mais q eu seja bem chato e rabugento eu sempre quero fazer o melhor por você e sempre te fazer feliz.
+      tudo que passamos juntos foi os melhores momentos da minha vida. estamos juntos tem pouco tempo,
+      mas quero viver mais e mais tempo junto com vc meu amor.
+    </p>
+    <p>
+      essa nossa viagem q a gente fez foi uma experiência q eu trocaria tudo para ter dnv e nem foi pq viajamos
+      foi pq passei um momento só eu e vc, só a gente junto curtindo a nossa vida n ligando para nada ao nosso redor,
+      pq é isso q quero da gente — a gente junto, n ligando para nada q acontece pois estamos juntos, e juntos superamos cada um dos obstáculos.
+    </p>
+    <p>
+      esse é o primeiro de vários dias dos namorados que vamos passar juntos. eu amo vc mozinho,
+      vc sem dúvidas é o meu melhor momento e meu mundo, meu amor. eu amo vc mais q o infinito e quero passar o resto da minha vida com vc, amor.
+      então é isso, vida, feliz dia dos namorados. eu amo vc mais q o infinito, vida ❤️🍁
+    </p>
+
+    <div class="gallery">
+      <img src="imagens/foto1.jpg">
+      <img src="imagens/foto2.jpg">
+      <img src="imagens/foto3.jpg">
+      <img src="imagens/foto4.jpg">
+      <img src="imagens/foto5.jpg">
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="ziontown.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "🍁 O que mais me chama atenção em você?",
+        resposta: "Sua forma de viver a vida sempre levando ela da forma mais simples e divertida"
+      },
+      {
+        pergunta: "🍁 O que eu mais quero viver com você ainda?",
+        resposta: "Conhecer o mundo e diferentes lugares com diferentes culturas"
+      },
+      {
+        pergunta: "🍁 Como eu vejo nós dois daqui a 5 anos?",
+        resposta: "Vivendo na natureza, casados cuidando da nossa plantação e transando bastante"
+      },
+      {
+        pergunta: "🍁 Se eu pudesse te dar o mundo, o que eu começaria te dando?",
+        resposta: "Nada pois oq eu poderia te dar eu já te dei q é meu amor, atenção e todo carinho do mundo"
+      },
+      {
+        pergunta: "🍁 O que eu penso quando acordo e lembro de você?",
+        resposta: "Penso na gente morando juntinhos e cuidando um do outro sem se preocupar com nada pois a gente se completa"
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    let current = 0;
+
+    function mostrarPergunta() {
+      const item = perguntas[current];
+      container.innerHTML = `
+        <div class="question-container active">
+          <h2>${item.pergunta}</h2>
+          <input type="text" id="respostaInput" placeholder="Sua resposta aqui">
+          <br>
+          <button onclick="verificarResposta()">Enviar</button>
+          <p id="feedback" style="margin-top:15px;"></p>
+        </div>
+      `;
+    }
+
+    function verificarResposta() {
+      const feedback = document.getElementById("feedback");
+      const item = perguntas[current];
+      feedback.innerHTML = `<strong>❌ Poxa, errou!</strong><br>💡 A resposta certa é: <em>${item.resposta}</em>`;
+      setTimeout(() => {
+        current++;
+        if (current < perguntas.length) {
+          mostrarPergunta();
+        } else {
+          container.innerHTML = "";
+          document.getElementById("finalMessage").classList.add("active");
+        }
+      }, 4000);
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>
